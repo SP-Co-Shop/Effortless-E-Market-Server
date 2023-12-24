@@ -6,10 +6,8 @@ import com.example.coshop.dto.category.CategoryResult;
 import com.example.coshop.repository.category.CategoryRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
-import java.io.NotActiveException;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -31,19 +29,24 @@ public class CategoryService {
                 .orElse(null);
 
         if (parentCategory == null){
-            categoryRepository.save(new Category(request.getName()));
+            /* 부모 카테고리 제일 최상위 카테고리의 경우 */
+            Category category = new Category(request.getName());
+            categoryRepository.save(category);
         }else {
-            categoryRepository.save(new Category(request.getName(),parentCategory));
+            System.out.println("############################");
+            /* 자식 카테고리 초기화 */
+            Category childCategory = new Category(request.getName(),parentCategory.getDepth()+1L);
+            childCategory.addParent(parentCategory);
+            categoryRepository.save(childCategory);
         }
-
-
-
 
     }
 
     /* 카테고리 조회 */
+    @Transactional
     public List<CategoryResult> findByAll(){
-        List<CategoryResult> results = categoryRepository.findAll().stream().map(CategoryResult::of).collect(Collectors.toList());
+
+        List<CategoryResult> results = categoryRepository.customFindAll().stream().map(CategoryResult::of).collect(Collectors.toList());
         return results;
     }
 

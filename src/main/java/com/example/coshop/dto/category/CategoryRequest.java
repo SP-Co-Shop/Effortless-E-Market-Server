@@ -1,6 +1,5 @@
 package com.example.coshop.dto.category;
 
-import com.example.coshop.Entity.Category;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 

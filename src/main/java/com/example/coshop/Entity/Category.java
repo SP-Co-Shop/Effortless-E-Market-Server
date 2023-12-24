@@ -34,16 +34,20 @@ public class Category {
     @OneToMany(mappedBy = "parent")
     private List<Category> child = new ArrayList<>();
 
+
     public Category(String name){
         this.name = name;
-        this.depth = 1L;
-        this.parent = null;
+        this.depth = 0L;
     }
 
-    public Category(String name,Category parent){
+    public Category(String name,Long depth){
         this.name = name;
-        this.parent = parent;
-        this.depth = parent.getDepth()+1;
+        this.depth = depth;
+    }
+
+    public void addParent(Category category){
+        this.parent = category;
+        category.child.add(this);
     }
 
 

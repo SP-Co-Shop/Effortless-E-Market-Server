@@ -1,11 +1,14 @@
 package com.example.coshop.test.category;
 
 import com.example.coshop.dto.category.CategoryRequest;
+import com.example.coshop.dto.category.CategoryResult;
 import com.example.coshop.service.CategoryService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
+
+import java.util.List;
 
 @SpringBootTest
 public class CategoryTest {
@@ -22,7 +25,9 @@ public class CategoryTest {
     @Test
     public void findByAll(){
         createCategory();
-        System.out.println(categoryService.findByAll());
+        List<CategoryResult> byAll = categoryService.findByAll();
+
+
     }
 
     @Test
@@ -35,10 +40,6 @@ public class CategoryTest {
 
         CategoryRequest request2 = new CategoryRequest("전공 서적", 1L);
         categoryService.createCategory(request2);
-
-
-
-
 
 
     }

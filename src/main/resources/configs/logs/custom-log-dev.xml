@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 60초마다 설정 파일의 변경을 확인 하여 변경시 갱신 -->
+
+
+<!--
+        데이터 포맷
+                    "service":"${LOGBACK_APP_ID}",
+                    "version":"${VERSION}",
+                    "type":"${APP_TYPE}",
+                    "level":"%level",
+                    "thread":"%thread",
+                    "src":"%logger{0}.%M\(%L\)",
+                    "message":"%msg",
+                    %replace("exception":"%ex{200}",){'"exception"\:"",', ''}
+                    %replace("userId":"%mdc{user-id}",){'"userId"\:"",', ''}
+                    "@timestamp":"%d{"yyyy-MM-dd'T'HH:mm:ss.SSS'+09:00'"}"
+-->
+
+
 <configuration scan="true" scanPeriod="60 seconds">
 
     <property name="LOG-FILE-NAME" value="cr-data"/>
