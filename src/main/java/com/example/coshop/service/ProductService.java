@@ -5,6 +5,7 @@ import com.example.coshop.Entity.Product;
 import com.example.coshop.Entity.Seller;
 import com.example.coshop.dto.product.ProductRequest;
 import com.example.coshop.repository.product.ProductRepository;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +13,8 @@ import org.slf4j.MDC;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import static net.logstash.logback.argument.StructuredArguments.kv;
+
 
 @Service
 @RequiredArgsConstructor
@@ -20,18 +23,18 @@ public class ProductService {
     private final ProductRepository productRepository;
     private final SellerService sellerService;
 
-    private final static Logger log = LoggerFactory.getLogger("dc-logger");
+    private static Logger log = LoggerFactory.getLogger("dc-logger");
 
     /* 상품 추가 */
-    public ResponseEntity createProduct(ProductRequest request){
+    public ResponseEntity createProduct(ProductRequest request, String url){
+        HttpServletRequest request1 = null;
         Seller seller = sellerService.findByIdToSeller(request.getSellerId());
         Product product = productBuilder(seller, request);
         productRepository.save(product);
+        System.out.println(url);
+        MDC.put("url",url);
 
-        MDC.put("url","/product/create");
-        MDC.put("sellerId", String.valueOf(seller.getId()));
-        MDC.put("productId",String.valueOf(product.getId()));
-        log.info("Success!! create product");
+        log.info("Success!! create product",kv("request",request));
 
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }

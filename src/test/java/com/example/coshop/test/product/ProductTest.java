@@ -46,7 +46,7 @@ public class ProductTest {
 
         ProductRequest productRequest = new ProductRequest(1L,"ItemA", 2000,"TEST ITEM",50,0);
 
-        productService.createProduct(productRequest);
+        productService.createProduct(productRequest,"/create/product");
 
     }
 }

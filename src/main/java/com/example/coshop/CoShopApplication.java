@@ -10,6 +10,9 @@ public class CoShopApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(CoShopApplication.class, args);
+//        SpringApplication application = new SpringApplication(CoShopApplication.class);
+//        application.setAdditionalProfiles("dev");
+//        application.run(args);
     }
 
 }
