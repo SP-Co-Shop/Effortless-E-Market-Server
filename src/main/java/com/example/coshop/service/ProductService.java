@@ -13,7 +13,6 @@ import org.slf4j.MDC;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import static net.logstash.logback.argument.StructuredArguments.kv;
 
 
 @Service
@@ -31,10 +30,8 @@ public class ProductService {
         Seller seller = sellerService.findByIdToSeller(request.getSellerId());
         Product product = productBuilder(seller, request);
         productRepository.save(product);
-        System.out.println(url);
-        MDC.put("url",url);
 
-        log.info("Success!! create product",kv("request",request));
+
 
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }

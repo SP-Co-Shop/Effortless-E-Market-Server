@@ -32,12 +32,12 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-validation'
 
 
-    /*Log Json Format*/
-    implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.4.12'
-    implementation group: 'ch.qos.logback', name: 'logback-core', version: '1.4.12'
-    implementation group: 'ch.qos.logback', name: 'logback-access', version: '1.3.7'
-//    implementation group: 'ch.qos.logback.contrib', name: 'logback-jackson', version: '0.1.5'
-    implementation group: 'net.logstash.logback', name: 'logstash-logback-encoder', version: '7.4'
+//    /*Log Json Format*/
+//    implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.4.12'
+//    implementation group: 'ch.qos.logback', name: 'logback-core', version: '1.4.12'
+//    implementation group: 'ch.qos.logback', name: 'logback-access', version: '1.3.7'
+////    implementation group: 'ch.qos.logback.contrib', name: 'logback-jackson', version: '0.1.5'
+//    implementation group: 'net.logstash.logback', name: 'logstash-logback-encoder', version: '7.4'
 
     /* QueryDSL*/
     implementation 'com.querydsl:querydsl-jpa:5.0.0:jakarta'
