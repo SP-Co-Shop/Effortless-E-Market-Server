@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import java.time.Instant;
 import java.util.Optional;
 
-import static com.example.coshop.constants.HeaderConstants.*;
+import static com.example.coshop.constants.HeaderConstant.*;
 
 @Component
 public class RequestLogger {
