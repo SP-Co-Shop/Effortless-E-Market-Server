@@ -1,6 +1,5 @@
 package com.example.coshop.interceptor;
 
-import com.example.coshop.constants.HeaderConstants;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.MDC;
@@ -8,7 +7,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 
 import java.util.UUID;
 
-import static com.example.coshop.constants.HeaderConstants.*;
+import static com.example.coshop.constants.HeaderConstant.*;
 
 public class MdcHandlerInterceptor implements HandlerInterceptor {
 
