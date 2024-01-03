@@ -10,7 +10,7 @@ import org.springframework.web.util.ContentCachingResponseWrapper;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 
-import static com.example.coshop.constants.HeaderConstants.*;
+import static com.example.coshop.constants.HeaderConstant.*;
 
 public class LoggingHandlerInterceptor implements HandlerInterceptor {
 
@@ -55,8 +55,6 @@ public class LoggingHandlerInterceptor implements HandlerInterceptor {
                 .response(byteArraytoString(cachingResponseWrapper.getContentAsByteArray()))
                 .build();
 
-
-        System.out.println(logMessage.toString());
         }
 
     }
