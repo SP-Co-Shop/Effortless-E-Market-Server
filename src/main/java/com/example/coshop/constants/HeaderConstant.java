@@ -1,6 +1,6 @@
 package com.example.coshop.constants;
 
-public class HeaderConstants {
+public class HeaderConstant {
     public static final String KEY_RESPONSE_HEADER_TRACE_ID = "X-Trace-Id";
     public static final String KEY_REQUEST_LOGGER_REQUEST_INCOMING_DATETIME = "KEY_REQUEST_LOGGER_REQUEST_INCOMING_DATETIME";
     public static final String KEY_REQUEST_CLIENT_IP = "X-Forwarded-For";
