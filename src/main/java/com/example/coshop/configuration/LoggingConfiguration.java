@@ -4,6 +4,7 @@ import com.example.coshop.annotation.EnableLogging;
 import com.example.coshop.interceptor.KafkaHandlerInterceptor;
 import com.example.coshop.interceptor.LoggingHandlerInterceptor;
 import com.example.coshop.interceptor.MdcHandlerInterceptor;
+import com.example.coshop.kafka.KafkaProducer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.context.ApplicationContext;
@@ -25,14 +26,14 @@ public class LoggingConfiguration implements WebMvcConfigurer {
     @Autowired
     private ApplicationContext context;
     @Autowired
-    private KafkaProducerConfig kafkaProducerConfig;
+    private KafkaProducer producer;
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         WebMvcConfigurer.super.addInterceptors(registry);
 
         registry.addInterceptor(new MdcHandlerInterceptor());
-        registry.addInterceptor(new KafkaHandlerInterceptor(kafkaProducerConfig));
+        registry.addInterceptor(new KafkaHandlerInterceptor(producer));
         registry.addInterceptor(new LoggingHandlerInterceptor());
 
     }
