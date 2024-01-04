@@ -4,6 +4,7 @@ import com.example.coshop.configuration.KafkaProducerConfig;
 import com.example.coshop.dto.log.LogDto;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -12,7 +13,11 @@ import static com.example.coshop.constants.KafkaConstant.KAFKA_TOPIC_NAME;
 
 public class KafkaHandlerInterceptor implements HandlerInterceptor {
 
-    private final KafkaProducerConfig producerConfig = new KafkaProducerConfig();
+    private final KafkaProducerConfig producerConfig;
+
+    public KafkaHandlerInterceptor(KafkaProducerConfig producerConfig) {
+        this.producerConfig = producerConfig;
+    }
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
@@ -27,8 +32,5 @@ public class KafkaHandlerInterceptor implements HandlerInterceptor {
         LoggingHandlerInterceptor.sharedData.remove(response.getHeader(KEY_RESPONSE_HEADER_TRACE_ID));
     }
 
-    public void init(){
-
-    }
 
 }
