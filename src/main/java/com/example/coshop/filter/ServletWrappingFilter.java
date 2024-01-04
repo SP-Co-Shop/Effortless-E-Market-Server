@@ -20,6 +20,5 @@ public class ServletWrappingFilter implements Filter {
 
         chain.doFilter(requestWrapper, responseWrapper);
 
-//        responseWrapper.copyBodyToResponse();
     }
 }
