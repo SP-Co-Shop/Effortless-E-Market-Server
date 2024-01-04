@@ -24,13 +24,15 @@ public class LoggingConfiguration implements WebMvcConfigurer {
 
     @Autowired
     private ApplicationContext context;
+    @Autowired
+    private KafkaProducerConfig kafkaProducerConfig;
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         WebMvcConfigurer.super.addInterceptors(registry);
 
         registry.addInterceptor(new MdcHandlerInterceptor());
-        registry.addInterceptor(new KafkaHandlerInterceptor());
+        registry.addInterceptor(new KafkaHandlerInterceptor(kafkaProducerConfig));
         registry.addInterceptor(new LoggingHandlerInterceptor());
 
     }
