@@ -62,7 +62,7 @@ public class LoggingHandlerInterceptor implements HandlerInterceptor {
                 .statusCode(String.valueOf(response.getStatus()))
                 .time((String) request.getAttribute(KEY_REQUEST_LOGGER_REQUEST_INCOMING_DATETIME))
                 .elapsedTimeMillis((Long) request.getAttribute(KEY_REQUEST_LOGGER_ELAPSED_MILLI))
-                .requestBody(byteArraytoString(cachingRequest.getContentAsByteArray()))
+                .requestBody(cachingRequest.getContentAsString().replaceAll("\n",""))
                 .response(byteArraytoString(cachingResponse.getContentAsByteArray()))
                 .build();
 
