@@ -1,8 +1,13 @@
 package com.example.coshop.interceptor;
 
 import com.example.coshop.dto.log.LogDto;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.util.ContentCachingRequestWrapper;
 import org.springframework.web.util.ContentCachingResponseWrapper;
@@ -11,15 +16,18 @@ import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 import static com.example.coshop.constants.HeaderConstant.*;
 
+@Slf4j
 public class LoggingHandlerInterceptor implements HandlerInterceptor {
 
     /* Kafka로 Interceptor로 보내기 위한 message의 임시 저장소*/
-    public static Map<String ,LogDto> sharedData = new HashMap<>();
+    public static Map<String ,String> sharedData = new HashMap<>();
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
+
+    private final Logger logger = LoggerFactory.getLogger("KafkaLogger");
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         request.setAttribute(KEY_REQUEST_LOGGER_REQUEST_INCOMING_DATETIME, LocalDateTime.now().toString());
@@ -62,14 +70,12 @@ public class LoggingHandlerInterceptor implements HandlerInterceptor {
                 .statusCode(String.valueOf(response.getStatus()))
                 .time((String) request.getAttribute(KEY_REQUEST_LOGGER_REQUEST_INCOMING_DATETIME))
                 .elapsedTimeMillis((Long) request.getAttribute(KEY_REQUEST_LOGGER_ELAPSED_MILLI))
-                .requestBody(cachingRequest.getContentAsString().replaceAll("\n",""))
+                .request(String.valueOf(objectMapper.readTree(cachingRequest.getContentAsByteArray())))
                 .response(byteArraytoString(cachingResponse.getContentAsByteArray()))
                 .build();
 
-        System.out.println(message.toString());
 
-        /* 임시 저장소에 저장*/
-        sharedData.put(response.getHeader(KEY_RESPONSE_HEADER_TRACE_ID), message);
+        logger.info("{}",message.toString());
     }
 
 

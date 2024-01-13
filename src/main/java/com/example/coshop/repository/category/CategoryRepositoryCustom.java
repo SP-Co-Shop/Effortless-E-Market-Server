@@ -1,6 +1,6 @@
 package com.example.coshop.repository.category;
 
-import com.example.coshop.Entity.Category;
+import com.example.coshop.entity.Category;
 
 import java.util.List;
 

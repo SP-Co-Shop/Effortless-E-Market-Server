@@ -18,7 +18,7 @@ public class SellerController {
     private final SellerService sellerService;
 
     @PostMapping("/create")
-    public ResponseEntity createSeller(@RequestBody @Valid SellerRequest request){
+    public ResponseEntity<SellerRequest> createSeller(@RequestBody @Valid SellerRequest request){
         return sellerService.createSeller(request);
     }
 

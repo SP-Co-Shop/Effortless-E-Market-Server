@@ -1,11 +1,10 @@
 package com.example.coshop.service;
 
-import com.example.coshop.Entity.Member;
+import com.example.coshop.entity.Member;
 import com.example.coshop.dto.member.request.MemberRequest;
 import com.example.coshop.repository.member.MemberRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;

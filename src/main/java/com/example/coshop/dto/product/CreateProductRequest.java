@@ -9,7 +9,7 @@ import lombok.ToString;
 @Getter
 @AllArgsConstructor
 @ToString
-public class ProductRequest {
+public class CreateProductRequest {
 
     @NotNull
     private Long sellerId;

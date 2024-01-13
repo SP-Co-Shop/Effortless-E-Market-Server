@@ -1,6 +1,6 @@
 package com.example.coshop.service;
 
-import com.example.coshop.Entity.Seller;
+import com.example.coshop.entity.Seller;
 import com.example.coshop.dto.seller.SellerRequest;
 import com.example.coshop.repository.seller.SellerRepository;
 import jakarta.transaction.Transactional;
@@ -22,7 +22,7 @@ public class SellerService {
     public ResponseEntity createSeller(SellerRequest request){
         Seller seller = sellerBuilder(request);
         sellerRepository.save(seller);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+        return ResponseEntity.status(HttpStatus.CREATED).body(request);
     }
 
     /* 판매자 생성 - Builder */

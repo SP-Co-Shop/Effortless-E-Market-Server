@@ -1,6 +1,5 @@
 package com.example.coshop.controller;
 
-import com.example.coshop.Entity.Member;
 import com.example.coshop.dto.member.request.MemberRequest;
 import com.example.coshop.service.MemberService;
 import jakarta.validation.Valid;

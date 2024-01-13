@@ -1,4 +1,4 @@
-package com.example.coshop.Entity;
+package com.example.coshop.entity;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;

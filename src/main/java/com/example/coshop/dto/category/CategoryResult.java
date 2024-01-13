@@ -1,6 +1,6 @@
 package com.example.coshop.dto.category;
 
-import com.example.coshop.Entity.Category;
+import com.example.coshop.entity.Category;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

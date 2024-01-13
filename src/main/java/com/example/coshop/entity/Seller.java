@@ -1,4 +1,4 @@
-package com.example.coshop.Entity;
+package com.example.coshop.entity;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 

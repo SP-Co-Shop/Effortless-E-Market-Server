@@ -1,6 +1,6 @@
 package com.example.coshop.test.product;
 
-import com.example.coshop.dto.product.ProductRequest;
+import com.example.coshop.dto.product.CreateProductRequest;
 import com.example.coshop.dto.seller.SellerRequest;
 import com.example.coshop.service.ProductService;
 import com.example.coshop.service.SellerService;
@@ -44,7 +44,7 @@ public class ProductTest {
         sellerService.createSeller(sellerRequest);
         em.clear();
 
-        ProductRequest productRequest = new ProductRequest(1L,"ItemA", 2000,"TEST ITEM",50,0);
+        CreateProductRequest productRequest = new CreateProductRequest(1L,"ItemA", 2000,"TEST ITEM",50,0);
 
         productService.createProduct(productRequest,"/create/product");
 

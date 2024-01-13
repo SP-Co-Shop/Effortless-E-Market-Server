@@ -1,9 +1,8 @@
-package com.example.coshop.Entity;
+package com.example.coshop.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Collection;
 import java.util.List;
 
 @Entity

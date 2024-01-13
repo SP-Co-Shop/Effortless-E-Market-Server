@@ -1,6 +1,6 @@
 package com.example.coshop.service;
 
-import com.example.coshop.Entity.Category;
+import com.example.coshop.entity.Category;
 import com.example.coshop.dto.category.CategoryRequest;
 import com.example.coshop.dto.category.CategoryResult;
 import com.example.coshop.repository.category.CategoryRepository;
@@ -17,7 +17,6 @@ import java.util.stream.Collectors;
 public class CategoryService {
 
     private final CategoryRepository categoryRepository;
-
 
     /* 카테고리 생성 */
     @Transactional
